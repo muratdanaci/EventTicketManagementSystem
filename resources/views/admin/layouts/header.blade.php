@@ -164,7 +164,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
+                                <a href="{{ route('settings.index') }}"> <i class="lni lni-cog"></i> Settings </a>
                             </li>
                         </ul>
                     </div>
