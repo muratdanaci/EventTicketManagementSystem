@@ -7,7 +7,7 @@
                     <!-- Logo -->
                     <div class="col-xl-2 col-lg-2 col-md-1">
                         <div class="logo">
-                            <a href="index.html"><img src="{{ asset('web/assets/img/logo/logo.png') }}" alt=""></a>
+                            <a href="{{ route('home') }}"><img src="{{ asset('web/assets/img/logo/logo.png') }}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-xl-10 col-lg-10 col-md-10">
@@ -16,7 +16,7 @@
                             <div class="main-menu f-right d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="{{ route('home') }}">Home</a></li>
                                         <li><a href="about.html">About</a></li>
                                         <li><a href="spakers.html">Spakers</a></li>
                                         <li><a href="schedule.html">Schedule</a></li>
@@ -31,10 +31,16 @@
                                     </ul>
                                 </nav>
                             </div>
+                            @auth
+                                <div class="header-right-btn f-right d-none d-lg-block ml-30">
+                                    <span class="text-white mr-20">{{ auth()->user()->name }}</span>
+                                    <a href="{{ route('logout') }}" class="btn header-btn">Logout</a>
+                                </div>
+                            @endauth
                             <div class="header-right-btn f-right d-none d-lg-block ml-30">
-                                <a href="#" class="btn header-btn">Get Your Ticket</a>
+                                <a href="{{ route('register') }}" class="btn header-btn">Register</a>
+                                <a href="{{ route('login') }}" class="btn header-btn">Login</a>
                             </div>
-                        </div>
                     </div>
                     <!-- Mobile Menu -->
                     <div class="col-12">

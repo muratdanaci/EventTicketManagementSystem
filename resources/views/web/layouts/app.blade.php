@@ -22,20 +22,10 @@
 	<link rel="stylesheet" href="{{ asset('web/assets/css/slick.css') }}">
 	<link rel="stylesheet" href="{{ asset('web/assets/css/nice-select.css') }}">
 	<link rel="stylesheet" href="{{ asset('web/assets/css/style.css') }}">
+    @yield('cssContent')
 </head>
 <body>
-    <!-- ? Preloader Start -->
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="{{ asset('web/assets/img/logo/loder.png') }}" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Preloader Start -->
+
     @include('web.layouts.header')
 
     <main>

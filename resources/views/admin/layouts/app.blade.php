@@ -8,40 +8,36 @@
     <title>Admin Template</title>
 
     <!-- ========== All CSS files linkup ========= -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/lineicons.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
-    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/lineicons.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/materialdesignicons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/fullcalendar.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/fullcalendar.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/main.css') }}" />
+
   </head>
   <body>
-    <!-- ======== Preloader =========== -->
-    <div id="preloader">
-      <div class="spinner"></div>
-    </div>
-    <!-- ======== Preloader =========== -->
-    @include('admin.layouts.sidebar');
+    @include('admin.layouts.sidebar')
 
     <!-- ======== main-wrapper start =========== -->
     <main class="main-wrapper">
-        @include('admin.layouts.header');
+        @include('admin.layouts.header')
 
-        @yield('content');
+        @yield('content')
 
-        @include('admin.layouts.footer');
+        @include('admin.layouts.footer')
     </main>
     <!-- ======== main-wrapper end =========== -->
     <!-- ========= All Javascript files linkup ======== -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/Chart.min.js"></script>
-    <script src="assets/js/dynamic-pie-chart.js"></script>
-    <script src="assets/js/moment.min.js"></script>
-    <script src="assets/js/fullcalendar.js"></script>
-    <script src="assets/js/jvectormap.min.js"></script>
-    <script src="assets/js/world-merc.js"></script>
-    <script src="assets/js/polyfill.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="{{ asset('admin/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/Chart.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/dynamic-pie-chart.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/moment.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/fullcalendar.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/jvectormap.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/world-merc.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/polyfill.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/main.js') }}"></script>
 
     <script>
       // ======== jvectormap activation
