@@ -38,7 +38,7 @@
                             <li>
                                 <a href="#0">
                                     <div class="image">
-                                        <img src="assets/images/lead/lead-6.png" alt="" />
+                                        <img src="{{ asset('admin/assets/images/lead/lead-6.png') }}" alt="" />
                                     </div>
                                     <div class="content">
                                         <h6>
@@ -58,7 +58,7 @@
                             <li>
                                 <a href="#0">
                                     <div class="image">
-                                        <img src="assets/images/lead/lead-1.png" alt="" />
+                                        <img src="{{ asset('admin/assets/images/lead/lead-1.png') }}" alt="" />
                                     </div>
                                     <div class="content">
                                         <h6>
@@ -97,7 +97,7 @@
                             <li>
                                 <a href="#0">
                                     <div class="image">
-                                        <img src="assets/images/lead/lead-5.png" alt="" />
+                                        <img src="{{ asset('admin/assets/images/lead/lead-5.png') }}" alt="" />
                                     </div>
                                     <div class="content">
                                         <h6>Jacob Jones</h6>
@@ -109,7 +109,7 @@
                             <li>
                                 <a href="#0">
                                     <div class="image">
-                                        <img src="assets/images/lead/lead-3.png" alt="" />
+                                        <img src="{{ asset('admin/assets/images/lead/lead-3.png') }}" alt="" />
                                     </div>
                                     <div class="content">
                                         <h6>John Doe</h6>
@@ -121,7 +121,7 @@
                             <li>
                                 <a href="#0">
                                     <div class="image">
-                                        <img src="assets/images/lead/lead-2.png" alt="" />
+                                        <img src="{{ asset('admin/assets/images/lead/lead-2.png') }}" alt="" />
                                     </div>
                                     <div class="content">
                                         <h6>Anee Lee</h6>
@@ -140,11 +140,11 @@
                             <div class="profile-info">
                                 <div class="info">
                                     <div class="image">
-                                        <img src="assets/images/profile/profile-image.png" alt="" />
+                                        <img src="{{ asset('admin/assets/images/profile/profile-image.png') }}" alt="" />
                                     </div>
                                     <div>
-                                        <h6 class="fw-500">Adam Joe</h6>
-                                        <p>Admin</p>
+                                        <h6 class="fw-500">{{ Auth::user()->name }}</h6>
+                                        <p><strong>Kullanıcı Bilgisi: {{ Auth::user()->role }}</strong></p>
                                     </div>
                                 </div>
                             </div>
@@ -153,35 +153,18 @@
                             <li>
                                 <div class="author-info flex items-center !p-1">
                                     <div class="image">
-                                        <img src="assets/images/profile/profile-image.png" alt="image">
+                                        <img src="{{ asset('admin/assets/images/profile/profile-image.png') }}" alt="image">
                                     </div>
                                     <div class="content">
-                                        <h4 class="text-sm">Adam Joe</h4>
+                                        <h4 class="text-sm">{{ Auth::user()->name }}</h4>
                                         <a class="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs"
-                                            href="#">Email@gmail.com</a>
+                                            href="#">{{ Auth::user()->email }}</a>
                                     </div>
                                 </div>
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#0">
-                                    <i class="lni lni-user"></i> View Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#0">
-                                    <i class="lni lni-alarm"></i> Notifications
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
-                            </li>
-                            <li>
                                 <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#0"> <i class="lni lni-exit"></i> Sign Out </a>
                             </li>
                         </ul>
                     </div>

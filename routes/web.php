@@ -1,19 +1,29 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\DashboardController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\Admin\DashboardController;
 
+// Home
 Route::get('/', function () {
     return view('web.index');
+})->name('home');
+
+// GUEST
+Route::middleware('guest')->group(function () {
+    // Login
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+
+    // Register (Sadece attendee)
+    Route::get('/register', [RegisterController::class, 'show'])->name('register');
+    Route::post('/register', [RegisterController::class, 'store'])->name('register.post');
 });
 
-// Admin Login UI
-Route::get('admin/login', function () {
-    return view('admin.auth.login');
-})->name('admin.login');
+// AUTH
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Admin Dashboard UI
-Route::get('admin/dashboard', function () {
-    return view('admin.dashboard');
-})->name('admin.dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
