@@ -51,6 +51,11 @@
                             </ul>
                         </div>
                     @endif
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                   <form action="{{ route('login.post') }}" method="POST">
                     @csrf
                     <div class="row">
@@ -78,9 +83,9 @@
                       <!-- end col -->
                       <div class="col-xxl-6 col-lg-12 col-md-6">
                         <div class="text-start text-md-end text-lg-start text-xxl-end mb-30">
-                          <a href="reset-password.html" class="hover-underline">
-                            Forgot Password?
-                          </a>
+                            <a href="{{ route('password.request') }}" class="hover-underline">
+                                Forgot Password?
+                            </a>
                         </div>
                       </div>
                       <!-- end col -->
