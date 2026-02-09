@@ -38,6 +38,18 @@
                     </ul>
                 </li>
 
+                {{-- <li class="nav-item nav-item-has-children">
+                    <a href="#" data-bs-toggle="collapse" data-bs-target="#organizer_tickets">
+                        <span class="text">Bilet Yönetimi</span>
+                    </a>
+                    <ul id="organizer_tickets" class="collapse dropdown-nav">
+                        @if(request()->route('event'))
+                            <li><a href="{{ route('events.tickets.index') }}">Biletler</a></li>
+                        @endif
+                        <li><a href="{{ route('events.tickets.create') }}">Bilet Oluştur</a></li>
+                    </ul>
+                </li> --}}
+
                 <li class="nav-item">
                     <a href="#">
                         <span class="text">Check-in</span>

@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\Event\EventController;
+use App\Http\Controllers\Event\TicketController;
+use App\Http\Controllers\Event\OrderController;
 use Illuminate\Support\Facades\Route;
 
 // Home
@@ -54,4 +56,10 @@ Route::middleware('auth')->group(function () {
         ->name('settings.password.update');
 
     Route::resource('events', EventController::class);
+
+    Route::resource('events.tickets', TicketController::class)
+        ->except(['show']);
+
+    Route::post('/tickets/{ticket}/buy', [OrderController::class, 'store'])
+        ->name('tickets.buy');
 });
