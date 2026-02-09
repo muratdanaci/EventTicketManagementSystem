@@ -22,7 +22,7 @@ services:
         networks:
             - sail
         depends_on:
-            - pgsql  # Sadece PostgreSQL'e bağlıyoruz
+            - pgsql
 
     pgsql:
         image: 'postgres:18-alpine'
@@ -34,8 +34,8 @@ services:
             POSTGRES_USER: '${DB_USERNAME}'
             POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
         volumes:
-            - 'sail-pgsql:/var/lib/postgresql'
-            - './vendor/laravel/sail/database/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql'
+            - '.:/var/www/html'
+            - './storage:/var/www/html/storage'
         networks:
             - sail
         healthcheck:

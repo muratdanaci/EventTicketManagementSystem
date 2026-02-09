@@ -16,12 +16,6 @@
 
                 <li class="nav-item">
                     <a href="#">
-                        <span class="text">Etkinlikler</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#">
                         <span class="text">Biletlerim</span>
                     </a>
                 </li>
@@ -35,12 +29,12 @@
                 </li>
 
                 <li class="nav-item nav-item-has-children">
-                    <a href="#0" data-bs-toggle="collapse" data-bs-target="#organizer_events">
+                    <a href="#" data-bs-toggle="collapse" data-bs-target="#organizer_events">
                         <span class="text">Etkinlik Yönetimi</span>
                     </a>
                     <ul id="organizer_events" class="collapse dropdown-nav">
-                        <li><a href="#">Etkinliklerim</a></li>
-                        <li><a href="#">Etkinlik Oluştur</a></li>
+                        <li><a href="{{ route('events.index') }}">Etkinliklerim</a></li>
+                        <li><a href="{{ route('events.create') }}">Etkinlik Oluştur</a></li>
                     </ul>
                 </li>
 
@@ -58,13 +52,10 @@
                     </a>
                 </li>
 
-                <li class="nav-item nav-item-has-children">
-                    <a href="#0" data-bs-toggle="collapse" data-bs-target="#admin_events">
+                <li class="nav-item">
+                    <a href="{{ route('events.index') }}">
                         <span class="text">Etkinlikler</span>
                     </a>
-                    <ul id="admin_events" class="collapse dropdown-nav">
-                        <li><a href="#">Tüm Etkinlikler</a></li>
-                    </ul>
                 </li>
 
                 <li class="nav-item">
