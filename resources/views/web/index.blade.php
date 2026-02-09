@@ -5,7 +5,6 @@
 @include('web.sections.home.slider')
 @include('web.sections.home.upcoming-event')
 @include('web.sections.home.organizer')
-@include('web.sections.home.schedule')
 
 @endsection
 @section('jsContent')

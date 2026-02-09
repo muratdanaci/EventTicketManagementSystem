@@ -3,36 +3,41 @@
 namespace App\Http\Controllers\Event;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ticket;
 use App\Models\TicketOrder;
-use Illuminate\Http\Request;
+use App\Http\Requests\BuyTicketRequest;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BuyTicketRequest $request, Ticket $ticket)
     {
-        $request->validate([
-            'quantity' => 'required|integer|min:1'
-        ]);
+        $request->validated();
 
-        if ($ticket->stock < $request->quantity) {
+        if ($ticket->quantity < $request->quantity) {
             return back()->withErrors('Yeterli bilet yok');
         }
 
         $total = $ticket->price * $request->quantity;
 
-        TicketOrder::create([
-            'user_id' => auth()->id(),
-            'ticket_id' => $ticket->id,
-            'quantity' => $request->quantity,
-            'total_price' => $total,
+        // Başarısız olması durumunda işlem geri alınacaktır.
+        DB::transaction(function () use ($ticket, $request) {
+            TicketOrder::create([
+                'user_id' => auth()->id(),
+                'ticket_id' => $ticket->id,
+                'quantity' => $request->quantity,
+                'total_price' => $ticket->price * $request->quantity,
+            ]);
+
+            $ticket->decrement('quantity', $request->quantity);
+        });
+
+        return response()->json([
+            'message' => 'Bilet satın alındı',
+            'remaining' => $ticket->fresh()->quantity
         ]);
-
-        $ticket->decrement('stock', $request->quantity);
-
-        return redirect()->route('dashboard')
-            ->with('success', 'Bilet satın alındı');
     }
 }

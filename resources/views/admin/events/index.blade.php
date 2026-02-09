@@ -27,6 +27,7 @@
                             <th>#</th>
                             <th>Görsel</th>
                             <th>Başlık</th>
+                            <th>Kalan Bilet</th>
                             <th>Etkinlik Tarihi</th>
                             <th>Güncelleme Tarihi</th>
                             <th>İşlem</th>
@@ -43,6 +44,7 @@
                                         Görsel Yok
                                     @endif
                                 <td>{{ $event->title }}</td>
+                                <td>{{ $event->tickets->sum('quantity') }}</td>
                                 <td>{{ \Carbon\Carbon::parse($event->start_date)->format('d.m.Y') }}</td>
                                 <td>{{ \Carbon\Carbon::parse($event->updated_at)->format('d.m.Y') }}</td>
                                 <td>
