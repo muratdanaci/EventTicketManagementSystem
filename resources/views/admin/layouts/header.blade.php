@@ -2,13 +2,16 @@
 <header class="header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-5 col-md-5 col-6">
+            <div class="col-lg-5 col-md-5 col-6 d-flex align-items-center">
                 <div class="header-left d-flex align-items-center">
                     <div class="menu-toggle-btn mr-15">
                         <button id="menu-toggle" class="btn btn-sm btn-outline-primary">
                             <i class="lni lni-chevron-left me-2"></i>
                         </button>
                     </div>
+                </div>
+                <div>
+                    <a href="{{ route('home') }}" class="btn btn-sm btn-primary">Website</a>
                 </div>
             </div>
             <div class="col-lg-7 col-md-7 col-6">

@@ -17,30 +17,27 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a href="{{ route('home') }}">Home</a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li><a href="spakers.html">Spakers</a></li>
-                                        <li><a href="schedule.html">Schedule</a></li>
-                                        <li><a href="blog.html">Blog</a>
-                                            <ul class="submenu">
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="blog_details.html">Blog Details</a></li>
-                                                <li><a href="elements.html">Element</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="{{ route('events') }}">Events</a></li>
                                     </ul>
                                 </nav>
                             </div>
                             @auth
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30">
-                                    <span class="text-white mr-20">{{ auth()->user()->name }}</span>
                                     <a href="{{ route('logout') }}" class="btn header-btn">Logout</a>
+                                    <a href="{{ route('dashboard') }}" class="btn header-btn">Panel</a>
                                 </div>
+
                             @endauth
-                            <div class="header-right-btn f-right d-none d-lg-block ml-30">
-                                <a href="{{ route('register') }}" class="btn header-btn">Register</a>
-                                <a href="{{ route('login') }}" class="btn header-btn">Login</a>
-                            </div>
+
+                            @if (!auth()->check())
+
+                            @endif
+                            @guest
+                                <div class="header-right-btn f-right d-none d-lg-block ml-30">
+                                    <a href="{{ route('register') }}" class="btn header-btn">Register</a>
+                                    <a href="{{ route('login') }}" class="btn header-btn">Login</a>
+                                </div>
+                            @endguest
                     </div>
                     <!-- Mobile Menu -->
                     <div class="col-12">

@@ -6,12 +6,15 @@ use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\Event\EventController;
+use App\Http\Controllers\Web\HomeEventController;
+use App\Http\Controllers\Event\TicketController;
+use App\Http\Controllers\Event\OrderController;
 use Illuminate\Support\Facades\Route;
 
 // Home
-Route::get('/', function () {
-    return view('web.index');
-})->name('home');
+Route::get('/', [HomeEventController::class, 'index'])->name('home');
+Route::get('/events', [HomeEventController::class, 'events'])->name('events');
+Route::get('/events/{event}', [HomeEventController::class, 'show'])->name('events.show');
 
 // GUEST
 Route::middleware('guest')->group(function () {
@@ -43,15 +46,23 @@ Route::middleware('guest')->group(function () {
 
 // AUTH
 Route::middleware('auth')->group(function () {
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::post('/tickets/{ticket}/buy', [OrderController::class, 'store'])
+            ->name('tickets.buy');
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::prefix('admin')->group(function () {
+        Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-    Route::get('/settings', [SettingsController::class, 'index'])
-        ->name('settings.index');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::post('/settings/password', [SettingsController::class, 'updatePassword'])
-        ->name('settings.password.update');
+        Route::get('/settings', [SettingsController::class, 'index'])
+            ->name('settings.index');
 
-    Route::resource('events', EventController::class);
+        Route::post('/settings/password', [SettingsController::class, 'updatePassword'])
+            ->name('settings.password.update');
+
+        Route::resource('events', EventController::class);
+
+        Route::resource('events.tickets', TicketController::class)
+            ->except(['show']);
+    });
 });
