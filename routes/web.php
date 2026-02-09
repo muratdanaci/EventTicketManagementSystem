@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\Event\EventController;
 use Illuminate\Support\Facades\Route;
 
 // Home
@@ -51,4 +52,6 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/settings/password', [SettingsController::class, 'updatePassword'])
         ->name('settings.password.update');
+
+    Route::resource('events', EventController::class);
 });
