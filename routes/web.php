@@ -12,6 +12,7 @@ use App\Http\Controllers\Event\TicketOrderController;
 use App\Http\Controllers\Event\OrderController;
 use App\Http\Controllers\Event\CheckInController;
 use App\Http\Controllers\Event\UserTicketController;
+use App\Http\Controllers\Event\SalesReportController;
 use Illuminate\Support\Facades\Route;
 
 // Home
@@ -82,5 +83,11 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/my-tickets', [UserTicketController::class, 'index'])
             ->name('mytickets');
+
+        Route::get('/events/{event}/sales-report', [SalesReportController::class, 'show'])
+            ->name('events.sales.report');
+
+        Route::get('/events/{event}/sales/pdf', [SalesReportController::class, 'salesPdf'])
+            ->name('events.sales.pdf');
     });
 });

@@ -52,6 +52,17 @@
                                     <a href="{{ route('events.tickets.index', $event) }}" class="btn btn-sm btn-primary">
                                         Biletleri Yönet
                                     </a>
+                                    @if(
+                                        auth()->user()->role === 'admin' ||
+                                        $event->organizer_id === auth()->id()
+                                    )
+                                        <a
+                                            href="{{ route('events.sales.report', $event) }}"
+                                            class="btn btn-sm btn-outline-success"
+                                        >
+                                            Satış Raporu
+                                        </a>
+                                    @endif
                                     <form method="POST" action="{{ route('events.destroy', $event) }}" class="d-inline">
                                         @csrf @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-outline-danger">Sil</button>
