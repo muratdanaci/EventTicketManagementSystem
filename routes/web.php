@@ -8,6 +8,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\Event\EventController;
 use App\Http\Controllers\Web\HomeEventController;
 use App\Http\Controllers\Event\TicketController;
+use App\Http\Controllers\Event\TicketOrderController;
 use App\Http\Controllers\Event\OrderController;
 use Illuminate\Support\Facades\Route;
 
@@ -64,5 +65,8 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('events.tickets', TicketController::class)
             ->except(['show']);
+
+        Route::get('/ticket-orders', [TicketOrderController::class, 'index'])
+            ->name('ticket-orders.index');
     });
 });
