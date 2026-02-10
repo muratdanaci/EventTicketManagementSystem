@@ -58,6 +58,13 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
+<hr>
+<hr>
+
+```php artisan migrate --seed```
+Komutunu çalıştırarak aşağıdaki kullanıcı bilgilerine erişebilirsiniz.
+
+
 ## Kullanıcı Giriş Bilgileri
 ### Admin
 Email: admin@test.com
