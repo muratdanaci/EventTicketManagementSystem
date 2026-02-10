@@ -23,7 +23,7 @@
 
             @if(auth()->user()->role === 'organizer')
                 <li class="nav-item">
-                    <a href="#">
+                    <a href="{{ route('dashboard') }}">
                         <span class="text">Dashboard</span>
                     </a>
                 </li>
@@ -74,8 +74,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#">
-                        <span class="text">Satış Raporları</span>
+                    <a href="{{ route('checkin.index') }}">
+                        <span class="text">Check-in</span>
                     </a>
                 </li>
             @endif
