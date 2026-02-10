@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Ticket;
+use App\Models\TicketCheckIn;
 
 class TicketOrder extends Model
 {
@@ -23,5 +24,10 @@ class TicketOrder extends Model
     public function ticket()
     {
         return $this->belongsTo(Ticket::class);
+    }
+
+    public function checkIn()
+    {
+        return $this->hasOne(TicketCheckIn::class);
     }
 }

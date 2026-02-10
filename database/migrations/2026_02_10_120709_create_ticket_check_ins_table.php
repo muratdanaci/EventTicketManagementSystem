@@ -11,12 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ticket_orders', function (Blueprint $table) {
+        Schema::create('ticket_check_ins', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('ticket_id')->constrained()->cascadeOnDelete();
-            $table->integer('quantity');
-            $table->decimal('total_price', 10, 2);
+
+            $table->foreignId('ticket_order_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
+            $table->string('code', 6)->unique();
+
+            $table->timestamp('checked_in_at')->nullable();
+
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ticket_orders');
+        Schema::dropIfExists('ticket_check_ins');
     }
 };
