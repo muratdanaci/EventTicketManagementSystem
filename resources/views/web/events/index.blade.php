@@ -24,14 +24,14 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-team mb-30">
                             <div class="team-img">
-                                <img src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->name }}" class="img-fluid rounded shadow">
+                                <img src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->title }}" class="img-fluid rounded shadow">
                                 <!-- Blog Social -->
                                 <ul class="team-social">
                                     <li><a href="{{ route('events.show', $event->id) }}"><i class="fas fa-eye"></i></a></li>
                                 </ul>
                             </div>
                             <div class="team-caption team-caption2">
-                                <h3><a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a></h3>
+                                <h3 class="text-dark "><a href="{{ route('events.show', $event->id) }}">{{ $event->title }}</a></h3>
                                 <p> {{ $event->location }}</p>
                             </div>
                         </div>
