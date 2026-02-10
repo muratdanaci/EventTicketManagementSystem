@@ -10,6 +10,8 @@ use App\Http\Controllers\Web\HomeEventController;
 use App\Http\Controllers\Event\TicketController;
 use App\Http\Controllers\Event\TicketOrderController;
 use App\Http\Controllers\Event\OrderController;
+use App\Http\Controllers\Event\CheckInController;
+use App\Http\Controllers\Event\UserTicketController;
 use Illuminate\Support\Facades\Route;
 
 // Home
@@ -48,7 +50,7 @@ Route::middleware('guest')->group(function () {
 // AUTH
 Route::middleware('auth')->group(function () {
     Route::post('/tickets/{ticket}/buy', [OrderController::class, 'store'])
-            ->name('tickets.buy');
+        ->name('tickets.buy');
 
     Route::prefix('admin')->group(function () {
         Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -68,5 +70,17 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/ticket-orders', [TicketOrderController::class, 'index'])
             ->name('ticket-orders.index');
+
+        Route::get('check-in', [CheckInController::class, 'index'])
+            ->name('checkin.index');
+
+        Route::post('check-in/search', [CheckInController::class, 'search'])
+            ->name('checkin.search');
+
+        Route::post('check-in/{checkIn}/confirm', [CheckInController::class, 'confirm'])
+            ->name('checkin.confirm');
+
+        Route::get('/my-tickets', [UserTicketController::class, 'index'])
+            ->name('mytickets');
     });
 });

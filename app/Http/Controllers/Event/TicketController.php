@@ -52,14 +52,6 @@ class TicketController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Ticket $ticket)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Ticket $ticket, Event $event)

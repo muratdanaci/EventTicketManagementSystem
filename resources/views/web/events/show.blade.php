@@ -95,20 +95,24 @@
                         },
                         body: JSON.stringify({ quantity })
                     })
-                    .then(res => res.json())
+                    .then(res => {
+                        if (!res.ok) {
+                            return res.json().then(err => { throw err; });
+                        }
+                        return res.json();
+                    })
                     .then(data => {
-                        alertBox.classList.remove('d-none');
+                        alertBox.classList.remove('d-none', 'alert-danger');
                         alertBox.classList.add('alert-success');
                         alertBox.innerText = data.message;
                     })
                     .catch(err => {
-                        alertBox.classList.remove('d-none');
+                        alertBox.classList.remove('d-none', 'alert-success');
                         alertBox.classList.add('alert-danger');
-                        alertBox.innerText = 'Bir hata oluştu';
+                        alertBox.innerText = err.message ?? 'Bir hata oluştu';
                     });
                 });
             });
         </script>
-
-    @endsection
+        @endsection
 @endsection

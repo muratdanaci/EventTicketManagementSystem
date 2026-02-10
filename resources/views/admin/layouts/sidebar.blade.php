@@ -15,7 +15,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#">
+                    <a href="{{ route('mytickets') }}">
                         <span class="text">Biletlerim</span>
                     </a>
                 </li>
@@ -44,12 +44,11 @@
                     </a>
                     <ul id="organizer_tickets" class="collapse dropdown-nav">
                             <li><a href="{{ route('ticket-orders.index') }}">Biletler</a></li>
-                        {{-- <li><a href="{{ route('events.tickets.create') }}">Bilet Oluştur</a></li> --}}
                     </ul>
                 </li>
 
                 <li class="nav-item">
-                    <a href="#">
+                    <a href="{{ route('checkin.index') }}">
                         <span class="text">Check-in</span>
                     </a>
                 </li>
@@ -69,7 +68,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#">
+                    <a href="{{ route('ticket-orders.index') }}">
                         <span class="text">Siparişler</span>
                     </a>
                 </li>
